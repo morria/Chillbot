@@ -35,6 +35,36 @@
             <artifactId>slack-api-client</artifactId>
             <version>1.8.1</version>
         </dependency>
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.tyrus.bundles</groupId>
+            <artifactId>tyrus-standalone-client</artifactId>
+            <version>1.17</version>
+        </dependency>
+        <dependency>
+            <groupId>com.slack.api</groupId>
+            <artifactId>bolt</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.slack.api</groupId>
+            <artifactId>bolt-servlet</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.slack.api</groupId>
+            <artifactId>bolt-jetty</artifactId> <!-- will resolve "bolt" and "bolt-servlet" artifacts as its dependencies -->
+            <version>1.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.31</version>
+        </dependency>
 
         <!-- Test -->
         <dependency>
