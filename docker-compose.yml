@@ -1,0 +1,29 @@
+version: "3.5"
+
+services:
+    chillbot:
+        build:
+            context: .
+        image: "morria/chillbot:latest"
+        container_name: "chillbot"
+        restart: "unless-stopped"
+        user: "1000"
+        ports:
+            - "8085:80"
+        secrets:
+            - slack_token
+        env_file: ./environment
+        environment:
+            VIRTUAL_HOST: "chillbot.lepton.work"
+            VIRTUAL_PORT: 8085
+            LETSENCRYPT_HOST: "chillbot.lepton.work"
+        networks: ["server"]
+
+secrets:
+    slack_token:
+        file: ./slack_token
+
+networks:
+   server:
+       external: true
+
