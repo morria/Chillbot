@@ -7,7 +7,7 @@ import Assert._
 class AppTest {
 
    @Test
-   def testOK() = {
+   def testOK(): Unit = {
       assertTrue(true)
    }
 

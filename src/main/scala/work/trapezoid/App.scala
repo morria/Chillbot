@@ -17,7 +17,7 @@ import com.slack.api.bolt.jetty.SlackAppServer
  * App expects env variables SLACK_TOKEN, SLACK_BOT_TOKEN
  * and SLACK_SIGNING_SECRET.
  *
- * SLACK_TOKEN and SLACK_BOT_TOKEN will probably be the same
+ * SLACK_TOKEN and SLACK_BOT_TOKEN will probably be the same.
  */
 object App {
 
@@ -34,13 +34,12 @@ object App {
             divider(),
             section(section => section.text(markdownText(":zap: *Now online*"))),
             actions((actions:ActionsBlockBuilder) => actions.blockId("now-online").elements(asElements(
-                  button(b => b.text(plainText((pt:PlainTextObjectBuilder) => pt.emoji(true).text("Alpha"))).value("v1")),
-                  button(b => b.text(plainText((pt:PlainTextObjectBuilder) => pt.emoji(true).text("Beta"))).value("v2"))
+                  button(b=> b.actionId("chillbot-action").text(plainText((pt:PlainTextObjectBuilder) => pt.emoji(true).text("Alpha"))).value("v1")),
+                  button(b => b.actionId("chillbot-action").text(plainText((pt:PlainTextObjectBuilder) => pt.emoji(true).text("Beta"))).value("v2"))
                ))
             )
          )
       ).build)
-      println("Got response " + response)
 
       // App expects env variables (SLACK_BOT_TOKEN, SLACK_SIGNING_SECRET)
       val app:BoltApp = new BoltApp()
@@ -50,7 +49,7 @@ object App {
       })
 
       // when a user clicks a button in the actions block
-      app.blockAction("now-online", (req, ctx) => {
+      app.blockAction("chillbot-action", (req, ctx) => {
         val value:String  = req.getPayload().getActions().get(0).getValue(); // "button's value"
         if (req.getPayload().getResponseUrl() != null) {
           // Post a message to the same channel if it's a block in a message
